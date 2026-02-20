@@ -1,16 +1,10 @@
-
-"""
-Person class
-Responsible for keeping details of each person simulated in our model
-Each member of the family tree is an instance of person class
-"""
 class Person:
+    """ Person class: Responsible for keeping details of each person simulated in our model. Each member of the family tree is an instance of person class"""
     def __init__(self):
         self.year_born = None
         self.year_died = None
         self.first_name = None
         self.last_name = None
-        self.full_namme = None
         self.partner = None
         self.children = []
 
@@ -50,8 +44,14 @@ class Person:
     def get_children(self):
         return self.children
     
+    def get_children_str(self):
+        full_name = ""
+        for child in self.children:
+            full_name += child.get_first_name() + " " + child.get_last_name() + ", "
+        return full_name
+
     def print(self):
         partner_name = "None"
         if self.partner != None:
             partner_name = self.partner.get_first_name() + " "  + self.partner.get_last_name()
-        print(f"Name: {self.first_name} {self.last_name} Year Born: {self.year_born} Year died: {self.year_died} Partner: {partner_name} Children: {self.children} ")
+        print(f"Name: {self.first_name} {self.last_name} Year Born: {self.year_born} Year died: {self.year_died} Partner: {partner_name} Children: {self.get_children_str()} ")
